@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Test Form Fix</h2>
+    <button onclick="testContact()">Test Contact API</button>
+    <button onclick="testRegister()">Test Register API</button>
+    
+    <script>
+        async function testContact() {
+            const testData = {
+                name: "Test User",
+                email: "test@example.com",
+                message: "Test message"
+            };
+            
+            const response = await fetch('api/contact.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(testData)
+            });
+            
+            const result = await response.json();
+            console.log('Contact Test:', result);
+            alert('Contact Test: ' + JSON.stringify(result));
+        }
+        
+        async function testRegister() {
+            const testData = {
+                full_name: "Test User",
+                email: "test@example.com", 
+                phone: "1234567890",
+                membership_plan: "basic"
+            };
+            
+            const response = await fetch('api/register.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(testData)
+            });
+            
+            const result = await response.json();
+            console.log('Register Test:', result);
+            alert('Register Test: ' + JSON.stringify(result));
+        }
+    </script>
+</body>
+</html>
